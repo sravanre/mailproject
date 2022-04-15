@@ -12,11 +12,14 @@ inprogress = ['-1']
 
 textfile = pathlib.Path("/mnt/d/mail_project/result_morning_batch_report.txt")
 pdffile = pathlib.Path("/mnt/d/mail_project/Morning_batch_report.pdf")
+textfile_remov_dups = pathlib.Path("/mnt/d/mail_project/result_morning_batch_report_dupsremoved.txt")
 
 if textfile.exists():
     os.remove("/mnt/d/mail_project/result_morning_batch_report.txt")
 if pdffile.exists():
     os.remove("/mnt/d/mail_project/Morning_batch_report.pdf")
+if textfile_remov_dups.exists():
+    os.remove(textfile_remov_dups)
 
 
 
@@ -63,6 +66,16 @@ with open(r"/var/tmp/test.csv", 'r') as fp:
 my_file.close()
 
 
+### removing the duplicates on the text file itself
+
+lines_seen = set() # holds lines already seen
+outfile = open('result_morning_batch_report_dupsremoved.txt', "w")
+for line in open("result_morning_batch_report.txt", "r"):
+    if line not in lines_seen: # not a duplicate
+        outfile.write(line)
+        lines_seen.add(line)
+outfile.close()
+
 
 
 #### writing to a pdf file 
@@ -77,7 +90,7 @@ pdf.add_page()
 # that you want in the pdf
 pdf.set_font("Arial", size = 15)
 
-output_file = open("/mnt/d/mail_project/result_morning_batch_report.txt", "r")
+output_file = open("/mnt/d/mail_project/result_morning_batch_report_dupsremoved.txt", "r")
 
 for pdf_line in output_file:
     pdf.cell(200, 10, txt = pdf_line,border= 100, ln = 1, align = "L")
