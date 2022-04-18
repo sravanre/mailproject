@@ -34,8 +34,8 @@ textfilepath = os.getcwd() + "/result_morning_batch_report.txt"
 # search operation 
 my_file = open(textfilepath, "a+")
 with open(filepath, 'r') as fp:
-    print("\t\t:::ERROR JOB LIST:::")
-    my_file.writelines("\t\t:::ERROR JOB LIST::::")
+    print("\t\t::::ERROR JOB LIST::::")
+    my_file.writelines("\t\t::::ERROR JOB LIST::::")
     for l_no, line in enumerate(fp):
         for x in check_error:
 
@@ -95,6 +95,10 @@ pdf.add_page()
    
 # set style and size of font 
 # that you want in the pdf
+# pdf.rect(x = 80, y = 20, w = 50, h = 55, style = '')
+# pdf.set_font("Arial", size = 20)
+# pdf.cell(200,10 ,txt = "Plexus Batch Report ", align="C")
+
 pdf.set_font("Arial", size = 15)
 
 output_file = open("result_morning_batch_report_dupsremoved.txt", "r")
