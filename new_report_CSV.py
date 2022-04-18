@@ -4,30 +4,35 @@ import os
 import pathlib
 from os import initgroups
 
-
-check_error = ['21', '22', '10', '23', '24', '25', '26', '27', '28', '29']  ## 10 status code is also added into the check as of now
+## 10 status code is also added into the check as of now
+check_error = ['21', '22', '10', '23', '24', '25', '26', '27', '28', '29'] 
 inprogress = ['-1']
 
 
-
+# declaring a path variable  ( this can be hardcoded also os.getcwd() )
 textfile = pathlib.Path("/mnt/d/mail_project/result_morning_batch_report.txt")
 pdffile = pathlib.Path("/mnt/d/mail_project/Morning_batch_report.pdf")
 textfile_remov_dups = pathlib.Path("/mnt/d/mail_project/result_morning_batch_report_dupsremoved.txt")
 
+
+
+# removing the existing files that needs to be removed at each iteration 
+
 if textfile.exists():
-    os.remove("/mnt/d/mail_project/result_morning_batch_report.txt")
+    os.remove(textfile)
 if pdffile.exists():
-    os.remove("/mnt/d/mail_project/Morning_batch_report.pdf")
+    os.remove(pdffile)
 if textfile_remov_dups.exists():
     os.remove(textfile_remov_dups)
 
 
-# declaring a path variable 
-
+# defining the files path in hardcode 
 filepath = os.getcwd() + "/test.csv"
+textfilepath = os.getcwd() + "/result_morning_batch_report.txt"
+
 
 # search operation 
-my_file = open("/mnt/d/mail_project/result_morning_batch_report.txt", "a+")
+my_file = open(textfilepath, "a+")
 with open(filepath, 'r') as fp:
     print("\t\t:::ERROR JOB LIST:::")
     my_file.writelines("\t\t:::ERROR JOB LIST::::")
@@ -81,8 +86,7 @@ outfile.close()
 
 
 
-#### writing to a pdf file 
-
+#### writing the result to a pdf file 
 
 pdf = FPDF()   
    
@@ -93,7 +97,7 @@ pdf.add_page()
 # that you want in the pdf
 pdf.set_font("Arial", size = 15)
 
-output_file = open("/mnt/d/mail_project/result_morning_batch_report_dupsremoved.txt", "r")
+output_file = open("result_morning_batch_report_dupsremoved.txt", "r")
 
 for pdf_line in output_file:
     pdf.cell(200, 10, txt = pdf_line,border= 100, ln = 1, align = "L")
