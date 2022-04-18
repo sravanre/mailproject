@@ -22,10 +22,13 @@ if textfile_remov_dups.exists():
     os.remove(textfile_remov_dups)
 
 
+# declaring a path variable 
 
+filepath = os.getcwd() + "/test.csv"
 
+# search operation 
 my_file = open("/mnt/d/mail_project/result_morning_batch_report.txt", "a+")
-with open(r"/var/tmp/test.csv", 'r') as fp:
+with open(filepath, 'r') as fp:
     print("\t\t:::ERROR JOB LIST:::")
     my_file.writelines("\t\t:::ERROR JOB LIST::::")
     for l_no, line in enumerate(fp):
@@ -47,7 +50,7 @@ with open(r"/var/tmp/test.csv", 'r') as fp:
                     my_file.write('\n')
                     my_file.writelines(line2[1])
 
-with open(r"/var/tmp/test.csv", 'r') as fp:
+with open(filepath, 'r') as fp:
     print('\n')
     print("\t\t::::INPROGRESS JOB LIST ::::::")
     my_file.writelines('\n')
