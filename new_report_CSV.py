@@ -2,7 +2,7 @@
 from fpdf import FPDF
 import os
 import pathlib
-from os import initgroups
+# from os import initgroups
 
 ## 10 status code is also added into the check as of now
 check_error = ['21', '22', '10', '23', '24', '25', '26', '27', '28', '29'] 
@@ -34,8 +34,8 @@ textfilepath = os.getcwd() + "/result_morning_batch_report.txt"
 # search operation 
 my_file = open(textfilepath, "a+")
 with open(filepath, 'r') as fp:
-    print("\t\t::::ERROR JOB LIST::::")
-    my_file.writelines("\t\t::::ERROR JOB LIST::::")
+    print("\t\t\t\t\t::::ERROR JOB LIST::::")
+    my_file.writelines("\t\t\t\t\t::::ERROR JOB LIST::::")
     for l_no, line in enumerate(fp):
         for x in check_error:
 
@@ -57,9 +57,9 @@ with open(filepath, 'r') as fp:
 
 with open(filepath, 'r') as fp:
     print('\n')
-    print("\t\t::::INPROGRESS JOB LIST ::::::")
+    print("\t\t\t\t\t::::INPROGRESS JOB LIST ::::::")
     my_file.writelines('\n')
-    my_file.writelines("\t\t::::INPROGRESS JOB LIST ::::::")
+    my_file.writelines("\t\t\t\t\t::::INPROGRESS JOB LIST ::::::")
     for l_no, line in enumerate(fp):
         for x in inprogress:
             if str(x) in line:
