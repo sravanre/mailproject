@@ -29,7 +29,7 @@ if textfile_remov_dups.exists():
 # defining the files path in hardcode 
 filepath = os.getcwd() + "/test.csv"
 textfilepath = os.getcwd() + "/result_morning_batch_report.txt"
-
+comparedfile = os.getcwd() + "/compared_output_2files.txt"
 
 # search operation 
 my_file = open(textfilepath, "a+")
@@ -71,6 +71,15 @@ with open(filepath, 'r') as fp:
                     #print(line2[1])
                     my_file.write('\n')
                     my_file.writelines(line2[1])
+
+with open(comparedfile, 'r') as fp:
+    my_file.writelines('\n')
+    for l_no, line in enumerate(fp):
+        my_file.writelines(line)
+
+
+
+
 my_file.close()
 
 
