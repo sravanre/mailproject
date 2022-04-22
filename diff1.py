@@ -8,7 +8,9 @@ file2 = open('TWSmapJobNames.txt', 'r').readlines()
 for j in file2:
     for i in file1:
         if i.strip() in j:
-            print(j.strip())
+            # print(j.strip().split(','))
+            k = j.strip().split(',')
+            print(k[1])
 
 # file1.close()
 # file2.close()
