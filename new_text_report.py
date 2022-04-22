@@ -70,9 +70,11 @@ file2 = open('TWSmapJobNames.txt', 'r').readlines()
 for j in file2:
     for i in file1:
         if i.strip() in j:
-            print(j.strip())
-            
-            compared_output_2files.writelines(j.strip())
+            #print(j.strip())
+            # print(j.strip().split(','))
+            k = j.strip().split(',')
+            print(k[1])
+            compared_output_2files.writelines(k[1])
             compared_output_2files.writelines('\n')
 
 compared_output_2files.close()
