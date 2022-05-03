@@ -73,8 +73,8 @@ for j in file2:
             #print(j.strip())
             # print(j.strip().split(','))
             k = j.strip().split(',')
-            print(k[1])
-            compared_output_2files.writelines(k[1])
+            print(k[1] + 'BatchJob')
+            compared_output_2files.writelines(k[1] + 'BatchJob')
             compared_output_2files.writelines('\n')
 
 compared_output_2files.close()
